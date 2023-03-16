@@ -42,11 +42,13 @@
     "@solana/buffer-layout": "^3.0.0"
   }
 {
-
-  "scripts": {
-
-    "build": "[my-framework] build --output public"
-
-  }
-
+"scripts": {
+     "build": "[my-framework] build --output public"
+   }
 }
+
+
+  
+  
+
+
