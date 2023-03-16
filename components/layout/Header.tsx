@@ -14,7 +14,7 @@ export default function Header() {
     
     return <>
         <div className={style.header} >
-            <Image src="/image/dappio-logo.png" width={160} height={60} alt="dappio logo" layout={"fixed"}/>
+            <Image src="/image/dappio-logo.png" width={160} height={60} alt="CIKKA logo" layout={"fixed"}/>
             <Link href="/my_spl">My SPL Tokens</Link>
             <Link href="/">Home</Link>
             <Link href="/exchange">Exchange</Link>
