@@ -14,7 +14,11 @@ export default function Header() {
     
     return <>
         <div className={style.header} >
+
             <Image src="/image/cikka.png.png" width={60} height={60} alt="cikka logo" layout={"fixed"}/>
+=======
+            <Image src="/image/cikka.png.png" width={60} height={60} alt="CIKKA logo" layout={"fixed"}/>
+
             <Link href="/my_spl">My SPL Tokens</Link>
             <Link href="/">Home</Link>
             <Link href="/exchange">Exchange</Link>
