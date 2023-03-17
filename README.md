@@ -1,7 +1,7 @@
 
 # Getting started
 
-This boilerplate aim to help solana devloper to start building a frontend dapp quickly.
+This boilerplate aim to help solana devloper to start building a frontend CIKKA quickly.
 
 The project is bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with Solana web3 wallet.
 
@@ -17,7 +17,7 @@ Simply implement all neccessory packages by npm install
 npm install
 ```
 
-## Runing demo dapp
+## Runing demo CIKKA
 
 You can run test server on localhost:3000 with the boilerplate basic template by runing " npm run dev"
 ```

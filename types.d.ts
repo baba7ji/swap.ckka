@@ -112,7 +112,7 @@ declare global {
 
     // Context Types
 
-    type DappContextType = {
+    type cikkaContextType = {
         splTokens: ISplToken[] | undefined,
         connection: Connection,
         setNotify: Dispatch<SetStateAction<INotify | null>>| null,
