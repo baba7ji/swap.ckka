@@ -1,10 +1,10 @@
 
 import SwapPage from "../components/raydium"
-import useDapp from "../hooks/useDapp"
+import usecikka from "../hooks/usecikka"
 
 
 export default function ExchangePage() {
-    const {splTokens} = useDapp()
+    const {splTokens} = usecikka()
     return <>
     <div style={{padding: "30px"}}>
         <SwapPage />

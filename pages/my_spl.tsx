@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import useDapp from "../hooks/useDapp"
+import useDapp from "../hooks/usecikka"
 import { TOKENS } from "../utils/tokens";
 import style from "../styles/mySpl.module.sass"
 import { useWallet } from "@solana/wallet-adapter-react";
+import usecikka from "../hooks/usecikka";
 
 
 export default function MySplPage() {
 
-    const {splTokens, setNotify} = useDapp()
+    const {splTokens, setNotify} = usecikka()
 
     const wallet = useWallet()
     

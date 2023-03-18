@@ -4,7 +4,7 @@ import { useWallet } from "@solana/wallet-adapter-react"
 import { Connection } from "@solana/web3.js"
 import { getSPLTokenData } from "../../utils/web3"
 import { useEffect, useState } from "react"
-import { DappContext } from "../../hooks/useDapp"
+import { cikkaContext } from "../../hooks/usecikka"
 // import { Liquidity, LiquidityPoolKeysV4 } from '@raydium-io/raydium-sdk'
 import Loading from '../common/Loading'
 import Notify from '../common/Notify'
@@ -12,8 +12,8 @@ import style from '../../styles/layout.module.sass'
 
 function Layout({...props}): JSX.Element {
 
-    const connection = new Connection("https://rpc-mainnet-fork.dappio.xyz", {
-        wsEndpoint: "wss://rpc-mainnet-fork.dappio.xyz/ws",
+    const connection = new Connection("https://rpc-mainnet-fork.cikka.xyz", {
+        wsEndpoint: "wss://rpc-mainnet-fork.cikka.xyz/ws",
         commitment: "processed"
     });
     // -->                                                                                // 3rd party Hooks
@@ -58,24 +58,24 @@ function Layout({...props}): JSX.Element {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             {/* fontawesome */}
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossOrigin="anonymous"/>
-            <title>Solana DAPP Boilerplate</title>
+            <title>CIKKA SWAP</title>
         </Head>
 
         <div  >
             <Header />
             {notify && <Notify message={notify} />}
             {loading && <Loading data={loading} />}
-            <DappContext.Provider value={{
+            <cikkaContext.Provider value={{
                 splTokens: splTokenData,
-                connection: new Connection("https://rpc-mainnet-fork.dappio.xyz", {
-                    wsEndpoint: "wss://rpc-mainnet-fork.dappio.xyz/ws",
+                connection: new Connection("https://rpc-mainnet-fork.cikka.xyz", {
+                    wsEndpoint: "wss://rpc-mainnet-fork.cikka.xyz/ws",
                     commitment: "processed"
                 }),
                 setNotify: setNotify,
                 setLoading: setLoading
             }}>
                 <main className={style.layoutContainer}>{props.children}</main>
-            </DappContext.Provider>
+            </cikkaContext.Provider>
         </div>
     </>
 }

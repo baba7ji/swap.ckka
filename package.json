@@ -1,5 +1,5 @@
 {
-  "name": "project60_solana_dapp",
+  "name": "project60_cikka",
   "private": true,
   "scripts": {
     "dev": "next dev",
