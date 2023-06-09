@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import useDapp from "../hooks/usecikka"
+import usecikka from "../hooks/usecikka";
 import { TOKENS } from "../utils/tokens";
 import style from "../styles/mySpl.module.sass"
 import { useWallet } from "@solana/wallet-adapter-react";
