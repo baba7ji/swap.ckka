@@ -28,7 +28,7 @@ const Stake: React.FC = () => {
       return;
     }
 
-    const connection = new Connection('https://api.devnet.solana.com', 'confirmed'); // Use the appropriate network.
+    const connection = new Connection('hhttps://restless-dimensional-model.solana-mainnet.discover.quiknode.pro/79b89dd9469c0f2182f5245a0b996c76bebb696f/'); // Use the appropriate network.
 
     const token = new symbol.Token(connection, mintAddress, TOKENS[0].tokenOptions); // Assuming TOKENS[0] is the CKKA token info.
     const ownerTokenAccount = await token.getOrCreateAssociatedAccountInfo(publicKey);
