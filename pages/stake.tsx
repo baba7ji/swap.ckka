@@ -4,7 +4,7 @@ import { Connection, PublicKey, Transaction, sendAndConfirmTransaction } from '@
 import { TOKENS } from '../utils/tokens';
 import style from '../styles/mySpl.module.sass';
 import symbol from '@solana/spl-token';
-import { Token } from '@solana/spl-token'; // Import Token class from the correct module
+import { Token } from '../utils/tokens'; // Import Token class from the correct module
 
 const cardImage = 'https://raw.githubusercontent.com/baba7ji/crypto/main/cikka.png.png';
 
