@@ -3,7 +3,7 @@ import usecikka from "../hooks/usecikka";
 import { TOKENS } from "../utils/tokens";
 import style from "../styles/mySpl.module.sass"
 import { useWallet } from "@solana/wallet-adapter-react";
-import usecikka from "../hooks/usecikka";
+import symbol from "@solana/spl-token"
 
 
 export default function MySplPage() {
@@ -37,8 +37,6 @@ export default function MySplPage() {
             if (spl) {
                 let token = {} as SplTokenDisplayData;
                 token["symbol"] = value.symbol;
-                token["mint"] = spl?.parsedInfo.mint;
-                token["pubkey"] = spl?.pubkey;
                 token["amount"] = spl?.amount;
                 tokenList.push(token);
             }
@@ -52,14 +50,12 @@ export default function MySplPage() {
                 return (
                 <div key={item.mint} className={style.item}  >
                     <div>
-                    <span style={{ marginRight: "1rem", fontWeight: "600" }}>
+                    <span style={{ marginRight: "1rem", fontWeight: "10" }}>
                         {item.symbol}
                     </span>
                     <span>- {item.amount}</span>
                     </div>
-                    <div style={{ opacity: ".25" }}>
-                    <div>Mint: {item.mint}</div>
-                    <div>Pubkey: {item.pubkey}</div>
+                    <div style={{ opacity: "1" }}>
                     </div>
                 </div>
                 );
