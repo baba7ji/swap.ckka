@@ -3,8 +3,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection, PublicKey, Transaction, sendAndConfirmTransaction } from '@solana/web3.js';
 import { TOKENS } from '../utils/tokens';
 import style from '../styles/mySpl.module.sass';
-import symbol from '@solana/spl-token';
-import { Tokens } from '../utils/tokens'; // Import Token class from the correct module
+import { Token, TOKEN_PROGRAM_ID } from '@solana/spl-token'; //
 
 const cardImage = 'https://raw.githubusercontent.com/baba7ji/crypto/main/cikka.png.png';
 
@@ -31,7 +30,12 @@ const Stake: React.FC = () => {
 
     const connection = new Connection('hhttps://restless-dimensional-model.solana-mainnet.discover.quiknode.pro/79b89dd9469c0f2182f5245a0b996c76bebb696f/'); // Use the appropriate network.
 
-    const token = new Token(connection, mintAddress, TOKENS[0].publicKey, publicKey); // Modify this line
+     const token = new Token(
+      connection,
+      mintAddress,
+      TOKEN_PROGRAM_ID,
+      publicKey
+    );
     const ownerTokenAccount = await token.getOrCreateAssociatedAccountInfo(publicKey);
 
     const transaction = new Transaction();
