@@ -148,8 +148,23 @@ const Stake: React.FC = () => {
             position: 'relative',
             overflow: 'hidden',
             marginRight: 10,
+            borderRadius: 8,
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
           }}
         >
+          <span
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background: 'linear-gradient(45deg, #00ccff, #00ffcc)',
+              zIndex: -1,
+              transform: 'scale(1.5) rotate(45deg)',
+              transition: 'transform 0.3s',
+            }}
+          />
           Spin All 500 CKKA
         </button>
         <button
@@ -163,6 +178,8 @@ const Stake: React.FC = () => {
             cursor: 'pointer',
             position: 'relative',
             overflow: 'hidden',
+            borderRadius: 8,
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
           }}
         >
           Refresh
