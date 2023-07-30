@@ -150,7 +150,7 @@ const Stake: React.FC = () => {
             marginRight: 10,
           }}
         >
-          Spin All
+          Spin All 500 CKKA
         </button>
         <button
           onClick={refreshPage}
