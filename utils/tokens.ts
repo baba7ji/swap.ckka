@@ -545,6 +545,14 @@ export const TOKENS: Tokens = {
     referrer: 'FKocyVJptELTbnkUkDRmT7y6hUem2JYrqHoph9uyvQXt',
     tags: ['raydium']
   },
+  CIKKA: {
+    symbol: 'CKKA',
+    name: 'CIKKA',
+    mintAddress: '51pPuhLArFyrUTiLwFtoySBnELppjNdG13b86zPVBY9Z',
+    decimals: 9,
+    referrer: '45EeiAb4YnQBuZcDRBVktEUoEuCceWYfVYpPeBqu92M7',
+    tags: ['raydium'] 
+  },
   ATLAS: {
     symbol: 'ATLAS',
     name: 'ATLAS',
