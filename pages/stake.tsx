@@ -9,6 +9,7 @@ interface FlippedCard {
 
 const Stake: React.FC = () => {
   const [flippedCards, setFlippedCards] = useState<FlippedCard[]>([]);
+  const [totalSum, setTotalSum] = useState<number>(0);  // Track the total sum of all numbers
 
   const flipCard = (index: number) => {
     setFlippedCards((prevCards) => {
@@ -44,21 +45,20 @@ const Stake: React.FC = () => {
     }
   };
 
-  const refreshPage = () => {
-    window.location.reload();
+  const resetFlippedCards = () => {
+    setFlippedCards([]); // Reset the flipped cards state
+    setTotalSum(0); // Reset the sum when refreshing
   };
 
   const spinAllCards = () => {
-    setFlippedCards((prevCards) => {
-      if (prevCards.length === 0) {
-        return Array.from({ length: 12 }).map((_, index) => ({
-          index: index,
-          randomNumber: generateRandomNumber(),
-        }));
-      } else {
-        return [];
-      }
-    });
+    const newCards = Array.from({ length: 4 }).map((_, index) => ({
+      index: index,
+      randomNumber: generateRandomNumber(),
+    }));
+    
+    setFlippedCards(newCards);
+    const newSum = newCards.reduce((acc, card) => acc + card.randomNumber, 0); // Sum all numbers
+    setTotalSum(newSum); // Update the total sum
   };
 
   return (
@@ -70,20 +70,20 @@ const Stake: React.FC = () => {
         height: '100vh',
         width: '100vw',
         backgroundColor: 'black',
+        flexDirection: 'column', // Align elements vertically
         padding: 20,
       }}
     >
       <div
         style={{
           display: 'flex',
-          flexWrap: 'wrap',
           justifyContent: 'center',
           alignItems: 'center',
           width: '80%',
           height: '80%',
         }}
       >
-        {Array.from({ length: 12 }).map((_, index) => {
+        {Array.from({ length: 4 }).map((_, index) => {
           const flippedCard = flippedCards.find((card) => card.index === index);
           const isFlipped = flippedCard !== undefined;
           const randomNumber = isFlipped ? flippedCard!.randomNumber : generateRandomNumber();
@@ -94,7 +94,7 @@ const Stake: React.FC = () => {
               className={`card${isFlipped ? ' flipped' : ''}`}
               onClick={() => flipCard(index)}
               style={{
-                width: 'calc(25% - 10px)',
+                width: 'calc(25% - 10px)', // Adjust card width to fit 4 in the row
                 height: '33.33%',
                 cursor: 'pointer',
                 transition: 'transform 1.2s ease-in-out',
@@ -135,67 +135,84 @@ const Stake: React.FC = () => {
           );
         })}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
-        <button
-          onClick={spinAllCards}
-          style={{
-            padding: '10px 20px',
-            fontSize: 16,
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            position: 'relative',
-            overflow: 'hidden',
-            marginRight: 10,
-            borderRadius: 8,
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-          }}
-        >
-          <span
+      
+      {/* Button and total sum section */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 1,
+          flexDirection: 'column', // Stack buttons and total sum vertically
+        }}
+      >
+        <div style={{ display: 'flex', marginBottom: 20 }}>
+          <button
+            onClick={spinAllCards}
             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(45deg, #00ccff, #00ffcc)',
-              zIndex: -1,
-              transform: 'scale(1.5) rotate(45deg)',
-              transition: 'transform 0.3s',
+              padding: '10px 20px',
+              fontSize: 16,
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: '2px solid #00ccff',
+              cursor: 'pointer',
+              position: 'relative',
+              marginRight: 20,
+              borderRadius: 8,
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+              transition: 'transform 0.2s',
             }}
-          />
-          Spin All 500 CKKA
-        </button>
-        <button
-          onClick={refreshPage}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.1)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
+          >
+            Spin All 500 CKKA
+          </button>
+          
+          <button
+            onClick={resetFlippedCards}
+            style={{
+              padding: '10px 20px',
+              fontSize: 16,
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: '2px solid #ff6347',
+              cursor: 'pointer',
+              position: 'relative',
+              borderRadius: 8,
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+              transition: 'transform 0.2s',
+            }}
+            onMouseEnter={(e) => (e.target.style.transform = 'scale(1.1)')}
+            onMouseLeave={(e) => (e.target.style.transform = 'scale(1)')}
+          >
+            Refresh
+          </button>
+        </div>
+
+        {/* Total Sum Display */}
+        <div
           style={{
-            padding: '10px 20px',
-            fontSize: 16,
-            backgroundColor: 'transparent',
             color: 'white',
-            border: 'none',
-            cursor: 'pointer',
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: 8,
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            textAlign: 'center',
           }}
         >
-          Refresh
-        </button>
+          Total Sum: {totalSum} CKKA
+        </div>
       </div>
+
       <style>
         {`
           @keyframes glowing-text {
             0% {
-              text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+              text-shadow: 0 0 10px rgba(255, 0, 149, 0.8);
             }
             50% {
-              text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+              text-shadow: 0 0 20px rgba(255, 0, 149, 0.8);
             }
             100% {
-              text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+              text-shadow: 0 0 10px rgba(255, 0, 149, 0.8);
             }
           }
         `}

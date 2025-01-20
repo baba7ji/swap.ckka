@@ -3,8 +3,8 @@ import { useContext, createContext } from "react";
 
 const cikkaContext = createContext<cikkaContextType>({
     splTokens: undefined,
-    connection: new Connection("https://rpc-mainnet-fork.cikka.xyz", {
-        wsEndpoint: "wss://rpc-mainnet-fork.cikka.xyz/ws",
+    connection: new Connection("https://solana-rpc.publicnode.com", {
+        wsEndpoint: "wss://solana-rpc.publicnode.com",
         commitment: "processed",
     }),
     setNotify: null,

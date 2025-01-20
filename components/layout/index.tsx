@@ -12,8 +12,8 @@ import style from '../../styles/layout.module.sass'
 
 function Layout({...props}): JSX.Element {
 
-    const connection = new Connection("https://rpc-mainnet-fork.cikka.xyz", {
-        wsEndpoint: "wss://rpc-mainnet-fork.cikka.xyz/ws",
+    const connection = new Connection("https://solana-rpc.publicnode.com", {
+        wsEndpoint: "wss://solana-rpc.publicnode.com",
         commitment: "processed"
     });
     // -->                                                                                // 3rd party Hooks
