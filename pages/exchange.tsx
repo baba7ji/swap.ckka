@@ -1,5 +1,18 @@
 import React, { useEffect } from "react";
 
+// Extend the Window interface to include the Jupiter property
+declare global {
+  interface Window {
+    Jupiter?: {
+      init: (options: {
+        displayMode: string;
+        integratedTargetId: string;
+        endpoint: string;
+      }) => void;
+    };
+  }
+}
+
 const JupiterTerminal: React.FC = () => {
   useEffect(() => {
     // Ensure the Jupiter terminal script is loaded
@@ -7,7 +20,7 @@ const JupiterTerminal: React.FC = () => {
     script.src = "https://terminal.jup.ag/main-v3.js";
     script.async = true;
     script.onload = () => {
-      // Initialize Jupiter terminal using your provided snippet
+      // Initialize Jupiter terminal
       if (window.Jupiter) {
         window.Jupiter.init({
           displayMode: "integrated", // Use integrated mode
@@ -21,7 +34,9 @@ const JupiterTerminal: React.FC = () => {
 
     return () => {
       // Clean up the script when the component unmounts
-      const existingScript = document.querySelector('script[src="https://terminal.jup.ag/main-v3.js"]');
+      const existingScript = document.querySelector(
+        'script[src="https://terminal.jup.ag/main-v3.js"]'
+      );
       if (existingScript) existingScript.remove();
     };
   }, []);
